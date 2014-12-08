@@ -28,7 +28,7 @@ class Section
     protected $name;
 
     /**
-     * @orm\OneToMany(targetEntity="Task", mappedBy="task")
+     * @orm\OneToMany(targetEntity="Task", mappedBy="section")
      */
     protected $tasks;
 
