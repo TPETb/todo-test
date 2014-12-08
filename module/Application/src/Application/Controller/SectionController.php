@@ -12,8 +12,10 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Session\Container;
 use Zend\View\Model\ViewModel;
 
-class SectionController extends AbstractActionController{
-    public function indexAction(){
+class SectionController extends AbstractActionController
+{
+    public function indexAction()
+    {
         $session = new Container('user');
 
         if (!$session->id) {
@@ -32,14 +34,11 @@ class SectionController extends AbstractActionController{
         ]);
     }
 
-    public function readAction(){
 
-        $session = new Container('user');
-
-        if (!$session->id) {
-            $this->redirect()->toUrl('/application/user/login');
-        }
+    public function readAction()
+    {
         $id = $this->params()->fromQuery('id');
+
         $em = $this->getServiceLocator()
             ->get('Doctrine\ORM\EntityManager');
 

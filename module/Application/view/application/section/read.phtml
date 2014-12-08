@@ -2,19 +2,25 @@
     <div class="col-md-4">
         <h1><?php echo $this->section->getName(); ?></h1>
 
-        <table>
-            <th>
-                <tr><?php echo $this->translate('Id') ?></tr>
-                <tr><?php echo $this->translate('Name') ?></tr>
-                <tr><?php echo $this->translate('Status') ?></tr>
-            </th>
+        <table class="table">
+            <thead>
+            <tr>
+                <th><?php echo $this->translate('Id') ?></th>
+                <th><?php echo $this->translate('Name') ?></th>
+                <th><?php echo $this->translate('Status') ?></th>
+                <th><?php echo $this->translate('Actions') ?></th>
+            </tr>
+            </thead>
+            <tbody>
             <?php foreach ($this->section->getTasks() as $task) { ?>
                 <tr>
                     <td><?php echo $task->getId(); ?></td>
                     <td><?php echo $task->getName(); ?></td>
                     <td><?php echo $task->getStatus(); ?></td>
+                    <td><a href="/application/todo/read?id=<?= $task->getId(); ?>">Read</a></td>
                 </tr>
             <?php } ?>
+            </tbody>
         </table>
     </div>
 </div>

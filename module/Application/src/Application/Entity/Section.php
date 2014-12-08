@@ -28,57 +28,11 @@ class Section
     protected $name;
 
     /**
-     * @orm\OneToMany(targetEntity="Task", mappedBy="task")
+     * @ORM\OneToMany(targetEntity="Task", mappedBy="section")
      */
     protected $tasks;
 
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * @param mixed $status
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
     /**
      * Constructor
      */
@@ -86,6 +40,43 @@ class Section
     {
         $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Section
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
 
     /**
      * Add tasks
@@ -100,6 +91,7 @@ class Section
         return $this;
     }
 
+
     /**
      * Remove tasks
      *
@@ -110,10 +102,11 @@ class Section
         $this->tasks->removeElement($tasks);
     }
 
+
     /**
      * Get tasks
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTasks()
     {
