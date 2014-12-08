@@ -1,0 +1,14 @@
+{
+    "name": "cogniteq/todo-test",
+    "authors": [
+        {
+            "name": "Alex aka TPETb Tretyakov",
+            "email": "alextret@gmail.com"
+        }
+    ],
+    "require": {
+        "zendframework/zendframework": "2.3.*",
+        "doctrine/doctrine-orm-module": "~0.8",
+        "zendframework/zend-developer-tools": "~0.0"
+    }
+}
