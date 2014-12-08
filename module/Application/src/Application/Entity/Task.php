@@ -45,4 +45,106 @@ class Task {
     protected $creator;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Task
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     * @return Task
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set section
+     *
+     * @param \Application\Entity\Section $section
+     * @return Task
+     */
+    public function setSection(\Application\Entity\Section $section = null)
+    {
+        $this->section = $section;
+
+        return $this;
+    }
+
+    /**
+     * Get section
+     *
+     * @return \Application\Entity\Section 
+     */
+    public function getSection()
+    {
+        return $this->section;
+    }
+
+    /**
+     * Set creator
+     *
+     * @param \Application\Entity\User $creator
+     * @return Task
+     */
+    public function setCreator(\Application\Entity\User $creator = null)
+    {
+        $this->creator = $creator;
+
+        return $this;
+    }
+
+    /**
+     * Get creator
+     *
+     * @return \Application\Entity\User 
+     */
+    public function getCreator()
+    {
+        return $this->creator;
+    }
 }

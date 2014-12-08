@@ -79,4 +79,44 @@ class Section
     {
         $this->status = $status;
     }
-} 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add tasks
+     *
+     * @param \Application\Entity\Task $tasks
+     * @return Section
+     */
+    public function addTask(\Application\Entity\Task $tasks)
+    {
+        $this->tasks[] = $tasks;
+
+        return $this;
+    }
+
+    /**
+     * Remove tasks
+     *
+     * @param \Application\Entity\Task $tasks
+     */
+    public function removeTask(\Application\Entity\Task $tasks)
+    {
+        $this->tasks->removeElement($tasks);
+    }
+
+    /**
+     * Get tasks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTasks()
+    {
+        return $this->tasks;
+    }
+}
