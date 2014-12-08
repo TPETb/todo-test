@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
+ * @todo make status enumerable
  */
 class Task {
     /**
@@ -37,36 +38,11 @@ class Task {
      **/
     protected $section;
 
-
     /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+     * @orm\ManyToOne(targetEntity="User", inversedBy="tasks")
+     * @orm\JoinColumn(name="creator_id", referencedColumnName="id")
+     **/
+    protected $creator;
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-} 
+}

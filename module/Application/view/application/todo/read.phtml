@@ -1,0 +1,67 @@
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Overall') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p>Task: <?= $this->task->getName(); ?></p>
+
+                <p>Status: <?= $this->translate($this->task->getStatus()); ?></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Latest activity') ?></h3>
+            </div>
+            <div class="panel-body">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Actions') ?></h3>
+            </div>
+            <?php if ('todo' == $this->task->getStatus()): ?>
+                <div class="panel-body">
+                    <form action="/application/todo/update?id=<?= $this->task->getId(); ?>" method="post">
+                        <p>
+                            <input type="submit" value="Complete"/>
+                        </p>
+                        <input name="status" type="hidden" value="done"/>
+                    </form>
+                </div>
+            <?php else: ?>
+                <div class="panel-body">
+                    <form action="/application/todo/update?id=<?= $this->task->getId(); ?>" method="post">
+                        <p>
+                            <input type="submit" value="Uncomplete"/>
+                        </p>
+                        <input name="status" type="hidden" value="todo"/>
+                    </form>
+                </div>
+            <?php endif; ?>
+            <div class="panel-body">
+                <form action="/application/todo/delete?id=<?= $this->task->getId(); ?>" method="post">
+                    <p>
+                        <input type="submit" value="Remove"/>
+                    </p>
+                    <input name="status" type="hidden" value="done"/>
+                </form>
+            </div>
+            <div class="panel-body">
+                <form action="/application/todo/update?id=<?= $this->task->getId(); ?>" method="post">
+                    <p>
+                        <input type="text" name="name" id="name" value="<?= $this->task->getName(); ?>"/><input type="submit" value="Rename"/>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
