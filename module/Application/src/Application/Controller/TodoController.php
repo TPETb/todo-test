@@ -41,16 +41,22 @@ class TodoController extends AbstractActionController
         $user = $em->find('Application\Entity\User', $session->id);
 
         if ($this->params()->fromPost('name')) {
-            $todo = new Task();
-            $todo->setCreator($user);
-            $todo->setName($this->params()->fromPost('name'));
-            $todo->setSection($em->find('Application\Entity\Section', $this->params()->fromPost('section')));
-            $todo->setStatus('todo');
+            $task = new Task();
+            $task->setCreator($user);
+            $task->setName($this->params()->fromPost('name'));
+            $task->setSection($em->find('Application\Entity\Section', $this->params()->fromPost('section')));
+            $task->setStatus('todo');
 
-            $em->persist($todo);
+            $em->persist($task);
             $em->flush();
 
-            $this->redirect()->toUrl('/application/todo/read?id=' . $todo->getId());
+            $this->redirect()->toUrl('/application/todo/read?id=' . $task->getId());
+        } else {
+            $sections = $em->getRepository('Application\Entity\Section')->findAll();
+
+            return new ViewModel([
+                'sections' => $sections
+            ]);
         }
     }
 
@@ -79,7 +85,32 @@ class TodoController extends AbstractActionController
      */
     public function updateAction()
     {
+        $session = new Container('user');
 
+        if (!$session->id) {
+            $this->flashMessenger()->addMessage('Only logged users are allowed to update todo');
+            $this->redirect()->toUrl('/');
+        }
+
+        $em = $this
+            ->getServiceLocator()
+            ->get('Doctrine\ORM\EntityManager');
+
+        $task = $em->find('Application\Entity\Task', $this->params()->fromQuery('id'));
+
+        if ($this->params()->fromPost('name')) {
+            $task->setName($this->params()->fromPost('name'));
+        }
+
+        if ($this->params()->fromPost('status')) {
+            $task->setStatus($this->params()->fromPost('status'));
+        }
+
+        $em->persist($task);
+        $em->flush();
+
+        $this->flashMessenger()->addMessage('Task updated');
+        $this->redirect()->toUrl('/application/todo/read?id=' . $task->getId());
     }
 
 

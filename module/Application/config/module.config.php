@@ -106,6 +106,7 @@ return array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\User' => 'Application\Controller\UserController',
             'Application\Controller\Todo' => 'Application\Controller\TodoController',
+            'Application\Controller\Section' => 'Application\Controller\SectionController',
         ),
     ),
     'view_manager' => array(

@@ -1,5 +1,6 @@
-<div class="row">
+<?= $this->flashMessenger()->render(); ?>
 
+<div class="row">
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -50,7 +51,7 @@
             <div class="panel-body">
                 <form action="/application/todo/delete?id=<?= $this->task->getId(); ?>" method="post">
                     <p>
-                        <input type="submit" value="Remove"/>
+                        <input type="submit" value="Remove"/> *DOESN'T WORK
                     </p>
                     <input name="status" type="hidden" value="done"/>
                 </form>
