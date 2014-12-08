@@ -19,6 +19,7 @@ use Zend\Session\Container;
  * @package Application
  * @todo move session related procedures to controller helper
  * @todo add password hashing for users
+ * @todo add proper routing to controllers/views
  */
 class Module
 {

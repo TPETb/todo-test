@@ -21,13 +21,25 @@ class UserController extends AbstractActionController
 {
     /**
      *
+     * @todo add check for user removal to avoid error 500 if user arrives after his removal
      */
     public function indexAction()
     {
         $session = new Container('user');
+
         if (!$session->id) {
             $this->redirect()->toUrl('/application/user/login');
         }
+
+        $em = $this
+            ->getServiceLocator()
+            ->get('Doctrine\ORM\EntityManager');
+
+        $user = $em->find('Application\Entity\User', $session->id);
+
+        return new ViewModel([
+            'user' => $user,
+        ]);
     }
 
 
@@ -68,5 +80,15 @@ class UserController extends AbstractActionController
                 ));
             }
         }
+    }
+
+
+    public function logoutAction()
+    {
+        $session = new Container('user');
+
+        $session->id = null;
+
+        $this->redirect()->toUrl('/application/user/index');
     }
 } 
