@@ -37,9 +37,10 @@ class Task {
      **/
     protected $section;
 
-
     /**
-     * @return mixed
+     * Get id
+     *
+     * @return integer 
      */
     public function getId()
     {
@@ -47,15 +48,22 @@ class Task {
     }
 
     /**
-     * @param mixed $id
+     * Set name
+     *
+     * @param string $name
+     * @return Task
      */
-    public function setId($id)
+    public function setName($name)
     {
-        $this->id = $id;
+        $this->name = $name;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get name
+     *
+     * @return string 
      */
     public function getName()
     {
@@ -63,10 +71,48 @@ class Task {
     }
 
     /**
-     * @param mixed $name
+     * Set status
+     *
+     * @param string $status
+     * @return Task
      */
-    public function setName($name)
+    public function setStatus($status)
     {
-        $this->name = $name;
+        $this->status = $status;
+
+        return $this;
     }
-} 
+
+    /**
+     * Get status
+     *
+     * @return string 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set section
+     *
+     * @param \Application\Entity\Section $section
+     * @return Task
+     */
+    public function setSection(\Application\Entity\Section $section = null)
+    {
+        $this->section = $section;
+
+        return $this;
+    }
+
+    /**
+     * Get section
+     *
+     * @return \Application\Entity\Section 
+     */
+    public function getSection()
+    {
+        return $this->section;
+    }
+}

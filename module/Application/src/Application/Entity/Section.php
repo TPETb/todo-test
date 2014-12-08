@@ -33,7 +33,17 @@ class Section
     protected $tasks;
 
     /**
-     * @return mixed
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
      */
     public function getId()
     {
@@ -41,15 +51,22 @@ class Section
     }
 
     /**
-     * @param mixed $id
+     * Set name
+     *
+     * @param string $name
+     * @return Section
      */
-    public function setId($id)
+    public function setName($name)
     {
-        $this->id = $id;
+        $this->name = $name;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get name
+     *
+     * @return string 
      */
     public function getName()
     {
@@ -57,26 +74,35 @@ class Section
     }
 
     /**
-     * @param mixed $name
+     * Add tasks
+     *
+     * @param \Application\Entity\Task $tasks
+     * @return Section
      */
-    public function setName($name)
+    public function addTask(\Application\Entity\Task $tasks)
     {
-        $this->name = $name;
+        $this->tasks[] = $tasks;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Remove tasks
+     *
+     * @param \Application\Entity\Task $tasks
      */
-    public function getStatus()
+    public function removeTask(\Application\Entity\Task $tasks)
     {
-        return $this->status;
+        $this->tasks->removeElement($tasks);
     }
 
     /**
-     * @param mixed $status
+     * Get tasks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
      */
-    public function setStatus($status)
+    public function getTasks()
     {
-        $this->status = $status;
+        return $this->tasks;
     }
-} 
+}

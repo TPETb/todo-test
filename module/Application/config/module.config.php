@@ -105,6 +105,7 @@ return array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\User' => 'Application\Controller\UserController',
+            'Application\Controller\Section' => 'Application\Controller\SectionController',
         ),
     ),
     'view_manager' => array(
