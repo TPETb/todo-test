@@ -23,6 +23,21 @@ return array(
             )
         )
     ),
+    'session' => array(
+        'config' => array(
+            'class' => 'Zend\Session\Config\SessionConfig',
+            'options' => array(
+                'name' => 'todoapp',
+            ),
+        ),
+        'storage' => 'Zend\Session\Storage\SessionArrayStorage',
+        'validators' => array(
+            array(
+                'Zend\Session\Validator\RemoteAddr',
+                'Zend\Session\Validator\HttpUserAgent',
+            ),
+        ),
+    ),
     'router' => array(
         'routes' => array(
             'home' => array(
@@ -88,7 +103,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\User' => 'Application\Controller\UserController',
         ),
     ),
     'view_manager' => array(

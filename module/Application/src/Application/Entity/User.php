@@ -15,6 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @package Application\Entity
  *
  * @ORM\Entity
+ * @todo add *mandatory* to login/password
+ * @todo add *unique* to login
  */
 class User
 {
@@ -28,6 +30,14 @@ class User
 
     /** @ORM\Column(type="string") */
     protected $fullName;
+
+
+    /** @ORM\Column(type="string") */
+    protected $login;
+
+
+    /** @ORM\Column(type="string") */
+    protected $password;
 
 
     /**
@@ -66,6 +76,46 @@ class User
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getLogin()
+    {
+        return $this->login;
+    }
+
+
+    /**
+     * @param mixed $login
+     * @return User
+     */
+    public function setLogin($login)
+    {
+        $this->login = $login;
+        return $this;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+
+    /**
+     * @param mixed $password
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
         return $this;
     }
 
